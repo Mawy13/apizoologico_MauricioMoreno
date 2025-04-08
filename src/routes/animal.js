@@ -30,4 +30,18 @@ router.put("/animals/:id", (req, res) => {
                 .catch((error) => res.json({ message: error }));
 });
 
+
+
+router.delete("/animals/:id", (req, res) => {
+        const { id } = req.params;
+        animalSchema
+                .findByIdAndDelete(id)
+                .then((data) => {
+                        res.json(data);
+                })
+                .catch((error) => {
+                        res.json({ message: error });
+                });
+});
+
 module.exports = router;
